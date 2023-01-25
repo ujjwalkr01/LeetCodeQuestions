@@ -23,15 +23,15 @@ public class Two_Sum {
 
 	private static int[] twoSum(int[] arr, int n, int target) {
 
-		int left = 0, right = n - 1;
-		while (left < right) {
-			if (arr[left] + arr[right] == target) {
-				return new int[] { left, right };
-			} else if (arr[left] + arr[right] > target) {
-				right--;
+		int i = 0, j = i+1;
+		while (i < j) {
+			if (arr[i] + arr[j] == target) {
+				return new int[] { i, j };
+			} else if (j==n-1) {
+				i++;
+				j=i+1;
 			} else {
-				left++;
-				right = n - 1;
+				j++;
 			}
 		}
 		return null;
