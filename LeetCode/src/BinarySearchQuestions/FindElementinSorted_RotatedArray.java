@@ -4,7 +4,7 @@ public class FindElementinSorted_RotatedArray {
 
 	public static void main(String[] args) {
 
-		int arr[] = { 3,1 };
+		int arr[] = { 3, 1 };
 		int target = 1;
 		System.out.println(findTargetELe(arr, target));
 	}
