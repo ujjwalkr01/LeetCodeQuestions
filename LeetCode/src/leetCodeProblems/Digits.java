@@ -1,5 +1,7 @@
 package leetCodeProblems;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class Digits {
@@ -9,31 +11,45 @@ public class Digits {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 
-		int digits[] = new int[n];
+		String digits[] = new String[n];
 		for (int i = 0; i < n; i++) {
-			digits[i] = sc.nextInt();
+			digits[i] = sc.next();
 		}
-		int arr[] = plusOne(digits);
-		for (int i = 0; i < arr.length; i++)
-			System.out.print(arr[i] + " ");
+		int dur = 2;
+		plusOne(digits);
+
 	}
 
-	private static int[] plusOne(int[] digits) {
+	private static void plusOne(String[] operations) {
 
-		int n = digits.length;
-		for (int i = n - 1; i >= 0; i--) {
-			if (digits[i] < 9) {
-				digits[i]++;
-				return digits;  
-		 }                   
+		int sum=0;
+	    int[] arr = new int[operations.length];
+	    int count=0;
 
-			digits[i] = 0;
-		}
-
-		int[] arr = new int[n + 1];
-		arr[0] = 1;
-
-		return arr;
+	    for(int i=0;i<operations.length;i++){
+	        // System.out.println(count + " " + operations[i]);
+	        if(operations[i].equals("C")){
+	            arr[--count]=0;
+	        }
+	        else if(operations[i].equals("D")){
+	            arr[count] = 2 * arr[count-1];
+	            count++;
+	        }
+	        else if(operations[i].equals("+")){
+	            arr[count]= arr[count-1] + arr[count-2];
+	            count++;
+	        }
+	        else{
+	            // System.out.println(operations[i]);
+	            arr[count] = Integer.parseInt(operations[i]);
+	            count++;
+	        }   
+	    }
+	    for(int j=0;j<arr.length;j++){
+	        //System.out.println(arr[j]);
+	        sum += arr[j];
+	    }
+	    System.out.println(sum);
 	}
 
 }

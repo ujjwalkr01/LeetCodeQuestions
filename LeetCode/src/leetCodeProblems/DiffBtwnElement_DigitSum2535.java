@@ -28,7 +28,6 @@ public class DiffBtwnElement_DigitSum2535 {
 			while (temp != 0) {
 				digitSum += temp % 10;
 				temp /= 10;
-
 			}
 		}
 		return Math.abs(sum - digitSum);
